@@ -17,7 +17,7 @@ EmployerDetails.prototype.empDetail = {
   
 };
 
-//employerDetail property 2
+//employerDetail property 2 (first method)
 EmployerDetails.prototype.getEmployerInfo = function() {
 	let empInfo = [];
 	empInfo = [this.empDetail.empName, this.empDetail.departments, this.empDetail.empAddress];
@@ -34,6 +34,7 @@ let Employee = function() {
 		return this.employeeName;
 	}
   
+  //first method for subclass
   this.employeeInfo = function() {
     return this.employeeName + ", " + this.empDetail.empName + ", " + this.empDetail.departments[6];
   };
@@ -42,7 +43,7 @@ let Employee = function() {
 //extending the properties of a superclass object (employerDetails) to subclass object (employee)
 Employee.prototype = new EmployerDetails();
 
-///mind you, this is only unidirectional, if you want the super class to be able to access the sub class you must declare its prototype as an object
+///note that, this is only unidirectional, if you want the super class to be able to access the sub class you must declare its prototype as an object
 //EmployerDetails.prototype = new Employee();
 
 //create new instances of the objects

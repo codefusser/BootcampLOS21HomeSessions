@@ -1,5 +1,11 @@
 /*
 	This mini-project demonstrates how to implement function object as a class in a real world senario
+	Class Features demonstrated are as folows:
+	Atributes (Properties)
+	Encapsulation
+	Inheritance
+	Polymorphism is a generic property for Javascript function, because a function could act on multiple number of arguments 
+	depending on how its invoked.
 */
 
 //First define an empty function

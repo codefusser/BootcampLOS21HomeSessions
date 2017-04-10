@@ -1,0 +1,1 @@
+This is a repo for the Boot camp exercises. They contain well simplified approach for performing simple programming concepts in Javascript.

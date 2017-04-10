@@ -1,6 +1,6 @@
 /*
 	This mini-project demonstrates how to implement function object as a class in a real world senario
-	Class Features demonstrated are as folows:
+	Class Features demonstrated are as follows:
 	Atributes (Properties)
 	Encapsulation
 	Inheritance

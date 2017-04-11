@@ -4,7 +4,7 @@
 let http = require('http');
 
 //Use the GET method to send a request to the API which will pass the response to the callback
-let request = http.get('http://api.apixu.com/v1/current.json?key=9e57f6b318a84c0fa7421756170904&q=Lagos', function(response){
+const request = http.get('http://api.apixu.com/v1/current.json?key=9e57f6b318a84c0fa7421756170904&q=Lagos', function(response){
 	let weatherData = "";
 	//console.log(response.statusCode);
 
@@ -28,5 +28,5 @@ let request = http.get('http://api.apixu.com/v1/current.json?key=9e57f6b318a84c0
 
 request.end();
 
-//check for weather current condition text (.current.condition.text)
-//weather locaation
+//check for weather current condition text (weatherInfo.current.condition.text)
+//weather location

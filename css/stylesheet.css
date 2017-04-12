@@ -1,0 +1,101 @@
+			body {
+				background-color:'#ed34ac';
+				'color: '#232adf';
+				font-family: 'Lucida';
+
+			}
+			.container {						
+				/*background-color: #34edac;
+				margin-left: 15%;*/
+				margin-top: 0%;
+				margin-right: 10%;
+			}
+
+			.btn-link {
+				/*background-color: #34edac;margin-right: 10%;	*/
+				margin-left: 15%;
+				margin-top: 0%;
+						
+			}
+
+			a:hover {
+				color: #00000;
+				background-color: #cea34e;
+			}				
+
+			.top-menu {
+				margin-top: 0%;
+				margin-left: 80%;
+
+			}
+
+			.project-name {
+
+				font-size: 3.5em;
+				margin-left: 20%;
+				margin-top: 0%;
+			}
+
+			.project-tagline {
+				font-size: 2.5em;
+				margin-left: 30%;
+				margin-top: 0%;
+
+			}
+
+			.btn:hover {
+				color: rgba(255, 255, 255, 0.8); 
+				text-decoration: none; 
+				background-color: rgba(255, 255, 255, 0.2); 
+				border-color: rgba(255, 255, 255, 0.3);
+			}
+
+			.page-header {
+				background-color: grey;
+				margin-top: 0%;
+				background-color: #159957; 
+				background-image: linear-gradient(120deg, #155799, #159957);/**/
+			}
+
+			.title {
+				color: '#123653';
+				font-size: 2.0rem;
+			}
+
+			p {
+				font-size: 1.2rem;
+			}
+
+			/*ul li:hover {
+				background-color: 'red';
+			}*/
+
+			#back_top {
+				float: left;
+				position: fixed;
+			}
+
+			li {
+				list-style-type: none;
+			}
+
+			.left-btn {
+				margin-left: 87%;
+			}
+
+			.leftbtn1 {				
+				background-color: #ffffff;
+				width: 150px;
+				border-style:ridge; border-color:#CCCCCC;
+			}
+			.leftbtn:hover {				
+				background-color:#ffff; 
+				border-color: rgba(255, 255, 255, 0.3);
+			}
+			.footer {
+				margin-left: 40%;
+			}
+			.leftbtn {
+				border: thin;
+				background-color: rgb(255, 248, 211);
+			}

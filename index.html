@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8" />
+		<title>Front-End Development Demo</title>
+		<link href="./css/stylesheet.css" rel="stylesheet" type="text/css" >		
+		
+	</head>
+<body>
+<div class="top-menu">
+	<a href="#">Projects</a>&nbsp;&nbsp;&nbsp;
+	<a href="#">Events</a>&nbsp;&nbsp;&nbsp;
+	<a href="#">Blog</a>&nbsp;&nbsp;&nbsp;
+	<a href="#">Github</a>
+</div>
+<div>
+<a id="top">Home</a></div>
+
+<section class="page-header">		
+		<h1 class="project-name">Javascript Programming Style Guide</h1>
+		<h2 class="project-tagline"> Best Practices for Javascript	</h2>
+	<div class="btn-link">
+		<a href="https://github.com/codefusser/BootCamp-LOS-21-Exercises" class="btn">BootCamp-LOS-21-Exercises on GitHub</a>      
+    	<a href="https://github.com/codefusser/client_library_API" class="btn">Javascript Client Library consuming Public API</a>
+    	<a href="https://github.com/codefusser/BootcampLOS21HomeSessions" class="btn">Selected Bootcamp LOS21 Home Sessions</a>
+    </div>
+</section>
+	<div class="left-btn" style="position: fixed;" >
+		<ul>		
+			<li><div class="leftbtn1" style="border-style:solid; border-color:#CCCCCC"><a href="#" class="leftbtn">Github</a></div></li>
+			<li><div class="leftbtn1"><a href="#" class="leftbtn">ES6 Style Guide</a></div></li>
+			<li><div class="leftbtn1"><a href="#" class="leftbtn">ES 5 Style Guide</a></div></li>
+			<li><div class="leftbtn1"><a href="#" class="leftbtn">Gitter</a></div></li>
+		</ul>
+	</div>
+
+
+<div>
+<div id="back_top" style="background-color:grey"><a href="#top">Goto Top</a></div></div>
+<section class="container">
+<div style="margin-left: 10%">
+<h3>Table Of Content</h3>
+<ul>
+	<li><a href="#workingobj">Working with Objects</a></li>
+	<li><a href="#workingvar">Working with Variables</a></li>
+	<li><a href="#closures">Closures</a></li>
+	<li><a href="#inheritance">Inheritance</a></li>
+	<li><a href="#functionlenprop">Function Length property</a></li>
+	<li><a href="#functioncont">Function Context</a></li>
+	<li><a href="#partiallycallingfun">Partially calling function(curry)</a></li>
+	<li><a href="#prototype">Prototype</a></li>
+	<li><a href="#timer">Timer</a></li>
+	
+</ul>
+
+    <p class="title"><strong><a id="workingobj"> Working with Objects</a></strong></p>
+    
+    	<p>In an object type, you can only set value to a key with the colon sign (:).
+
+Also, note that if you must use a function definition to act as an object use the <code>this</code> keyword to assign values and not any of the primitive approach (i.e.<code>var, let or const</code> ) except for an object type.
+
+Function object properties must be defined using the prototype keyword. An object contains a key/value pair, which is known as the property of the object; keys are generally represented as a string but can be used without quotes while values can be either another object or a function which will either perform a task or return another object. 
+
+You should not assign a value to a key variable with the equal sign as you would do to an ordinary variable.
+
+Each key/value pair, i.e. property, in an object is separated with a comma.
+
+
+The use of factory to create function object is a great way of enforcing data encapsulation in class OO design. It also ensures data sharing, so that for every object that you create, share access to the same object definition and any changes made to the properties of the object with an instance of that object is reflected to other instance of the object. </p>
+
+<p>Once you assign a function definition to a variable, the function, especially if it has a name, is no longer callable because it's now a value.
+e.g.</p>
+<pre><code>var fn = function fxn(n){
+	return n;
+	}
+</code></pre>
+
+
+<p>
+You can not call <code> fxn(4);</code> this will return an error; but you can call <code>fn(4)</code>, because this pattern is usually used if you don't want to name a function in its definition.
+Compare the function definitions below:
+</p>
+
+<pre><code>var ninja = { 
+  yell: function(n){ 
+    return n > 0 ? ninja.yell(n-1) + "a" : "hiyi"; 
+  } 
+}; 
+
+var ninja = { 
+  yell: function(n){ 
+    return n > 0 ? arguments.callee(n-1) + "a" : "hiyi"; 
+  } 
+}; </code></pre>
+
+
+<p class="title"><strong><a id="workingvar">Working with Variables</a></strong></p>
+<p>
+If a variable is defined within a function and its function is invoked the variable becomes available as a global variable. The <code>new</code> operator creates a copy of the function as an object. This is known as the instantiation of the function. It creates an instance of the function as an object.
+</p>
+
+<p>
+The <code>this</code> object is used to refer to a property in context.
+
+If a function is intended to be instantiated, but without the <code>new</code> operator it will be invoked. Thereby, exposing all variables in the function to the global scope.
+Check out this code snippet:
+</p>
+
+<pre><code>
+function User(first, last){
+  this.name = first + " " + last;
+}
+
+var name = "Doe";
+var user = User("John", name);
+console.log(name);
+</code></pre>
+
+
+<p>
+<code>name</code> is initially defined in the User function scope but becomes global when assigned, supposedly to be instantiated. So the <code>name</code> defined outside the function will be overridden. If we do the proper instantiation, the <code>name</code> variable in the function will be private and different from the one declared outside the function. 
+This is a simple magical power of writing JavaScript in an OO programming style.
+</p>
+<p class="title"><strong><a id="closures">Closures</a></strong></p>
+<p>
+As much as JS cares so much about hoisting variable declaration, if a global variable is assigned a different value after a function definition, which uses the variable in its definition, and the function is invoked, the later value preceeds in the function call. In order to prevent this misbehavior, you use the variable via a closure inside the function definition.
+
+In non-strict mode code, functions can only be declared at top level, inside a block, or as the body of an if statement. (ref)
+
+Typically, if you want to have a prototypical method for an object, you should declare an empty object i.e. an object without properties. But if you have, first, declared properties for an object any prototypical properties declared will be overrided by the existing properties if they are the same name.
+
+An object can be an "instanceof" of a function, which can also be its constructor, if defined with the new operator. In fact, the constructor method can be used to create another object.
+</p>
+<p class="title"><strong><a id="inheritance">Inheritance</a></strong></p>
+
+<p>
+When dealing with inheritance, one object can inherit methods from another, even their prototype methods, if properly done.
+For instance, it's wrong to assign one object prototype to another like this: <code>OneObject.prototype = AnotherObject.prototype</code> rather use this approach
+
+<code>OneObject.prototype = new AnotherObject();</code>
+
+<p class="title"><strong><a id="functionlenprop">Function Length property</a></strong></p>
+<p>
+It's customarily to use the arguments object to access the arguments in a function, whose length is the number of arguments in the function. Also, by simplying using the function name with a dot sign you can access the length property of the function which is the number of arguments in the function.
+i.e. 
+</p>
+<pre><code>
+fnName.length ==> number of arguments in the function
+(function(){
+	return {
+	return new Ninja();
+}
+
+}
+
+})();
+</code></pre>
+<p>In the revised JavaScript standard ECMAScript 6 & 7, you can use a different operator to achieve the same goal. The operator is known as Rest Operator, syntax <code>function(...args){ args.length ==> number of arguments in the function };</code>. But not all browsers support this syntax, yet</p>
+<p>
+Although, function definition will always be reached anywhere in a code, even, after a return statement in another function block, there are exception to this. Because the assertion function is used to test a value, it will not reach a function definition after it. That is if you have a function definition to test with assert statement, it will fail if the function is defined after the assert statement. For instance,</p>
+<pre><code>
+assert(fn, "This function 'fn' is not reached!");
+
+var fn = function(){
+  return true;
+}
+
+var fn = function myFn(){
+  return true;
+}
+</code></pre>
+<p>
+This big question now is "What does the assignment of a function mean to that function?" 'Does it change the state of the function and how, if it does?'. Because 
+</p>
+<pre><code>
+typeof fn == "function" but 
+typeof myFn == "undefined" (WHY)
+</code></pre>
+
+<p>
+When a named function is assigned to a variable the variable becomes a function while the named function's typeof is undefined.
+</p>
+
+<p class="title"><strong><a id="functioncont">Function Context</a></strong></p>
+
+<p>
+Just as the name context implies so does it take its meaning when use in JavaScript programming for function context. It simply means a declaration of a function such that it utilizes objects in context of its definition, usually, using the 'this' keyword. If the object being referred to its not found in the context of the function, whether in an object or nested in another function object, it will look out of the scope and keep going outer until it reaches a global scope, if ever there would be a global declaration of that object. Because, it is highly discourages to use a global object declaration in JavaScript.
+
+Unless, you are using function as an object you neither access nor change variables defined inside the function.
+</p>
+<pre><code>function multiMax(multi){:
+	return multi * Math.max.apply( Math,
+	Array.prototype.slice.call( arguments, 1));
+}
+console.log(multiMax(5,1,2,3))</code></pre>
+
+<p class="title"><strong><a id="partiallycallingfun">Partially calling function(curry)</a></strong></p>
+<pre><code>Function.prototype.curry = function(){
+ var fn = this, args = Array.prototype.slice.call(arguments);
+return function(){
+ return fn.apply(this, args.concat(Array.prototype.slice.call(arguments)));
+};
+};</code></pre>
+<p>
+This snippet is performing an inner function definition which is returned as a curry function
+
+Essentially, what it does is to slice the arguments of a function(object) one after another and because this turns out to become an array it's then applied to the new function, known as the curry function, and then returned. This is one powerful way of expressing closures.
+
+
+One key note about closures when dealing with variables, preventing them from unnecesary nuisance created when used in the global scope, is to ensure that all variables in a program are properly enclosed in functions using closures.
+</p>
+<p class="title"><strong><a id="prototype">Prototype</a></strong></p>
+
+<p>
+The prototype object gives us the additional possibility of extending the functionality of objects in a function but doesn't supersede over the objects definition in the function. Which's the reason </p>
+
+<code>hasOwnProperty()</code><p> method will be true for a function prototype but returns false for object(s) defined in the function.
+Things to avoid when working with prototype is extending the Object.prototype. Although, this problem can be resolved with the hasOwnProperty() method
+</p>
+<p>
+//This comment is subject to verification
+Using the <code>.extend() </code>
+method for prototypical inheritance (supported by prototypejs or base2)
+This is an alternative to using subClass() method of function(parent) object i.e.</p>
+<pre><code>
+var Ninja = Person.subClass({
+
+});
+</code></pre>
+<p>
+But in a situation that you want to extend a typical function's method, you extend its Object method, which is the highest in the rank of any function.
+</p>
+<pre><code>
+var Person = Object.subClass({
+
+});
+</code></pre>
+
+<p class="title"><strong><a id="timer">Timers</a></strong></p>
+<p>
+Central Timer Control is a techniques that allows for multiple simultaneous execution of timers in your application.
+
+
+Be overly concern about the naming convention you adopt for your program. Don't use keywords for your names or values of ids and classnames. This is a serious concerns for other web platform. For instance, when assigning attributes' values to your HTML elements, and you use a name value as 'name', an id as 'length' or id of 'submit' in the input element of your HTML code it could result into an unexpected performance in other browsers.
+    </p>
+    </div>
+</section>	
+<footer class="footer">Reference:<a href="http://ejohn.org">John Resig</a>
+<pre>Author: Kingsley Uchunor <a href="mailto:kizucom@yahoo.com">Email</a></pre>
+</footer>
+</body>
+</html>
+

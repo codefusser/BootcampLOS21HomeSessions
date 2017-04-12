@@ -1,3 +1,9 @@
 # A repository for Bootcamp exercises
 
-This is a repo for the Boot camp exercises. It contains well simplified approach for performing simple Object Oriented Programming concepts in Javascript.
+# Front-End Development
+A user Interface using HTML and CSS. This webpage is a mimick of http://airbnb.io/projects/javascript/
+
+# How-To
+
+Simple open the index.html with a web browser. You must put the css folder and the index.html file in the same directory.
+

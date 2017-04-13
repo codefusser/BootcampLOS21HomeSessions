@@ -3,8 +3,9 @@
 //require the https module to enable a connection to the https protocol URL of the public API
 let http = require('http');
 
+let location = 'Lagos';
 //Use the GET method to send a request to the API which will pass the response to the callback
-const request = http.get('http://api.apixu.com/v1/current.json?key=9e57f6b318a84c0fa7421756170904&q=Lagos', function(response){
+const request = http.get('http://api.apixu.com/v1/current.json?key=9e57f6b318a84c0fa7421756170904&q='+location, function(response){
 	let weatherData = "";
 	//console.log(response.statusCode);
 
